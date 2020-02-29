@@ -1,0 +1,42 @@
+﻿@page "/combo-model"
+
+<select @bind="@MonedaSelected">
+  <option value="0">- seleccionar -</option>
+  @if (MonedaList == null)
+  {
+    @foreach (var item in MonedaList)
+    {
+      <option value="@item.Id">@item.Nombre</option>
+    }
+  }
+</select>
+
+<div>
+  Moneda seleccionada: @MonedaSelected
+</div>
+@code{
+
+
+  List<Moneda> MonedaList;
+  int MonedaSelected = 0;
+  string estadoMoneda = "vacio";
+
+  protected override Task OnInitializedAsync()
+  {
+    MonedaList = new List<Moneda>()
+{
+      new Moneda(){ Id = 1, Nombre = "S/. SOLES" },
+      new Moneda(){ Id = 2, Nombre = "$ DOLARES" },
+      new Moneda(){ Id = 3, Nombre = "€ EUROS"}
+    };
+
+    return base.OnInitializedAsync();
+  }
+
+
+  class Moneda
+  {
+    public int Id { get; set; }
+    public string Nombre { get; set; }
+  }
+}
