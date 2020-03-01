@@ -1,0 +1,14 @@
+﻿@page "/graphics/bar-1"
+@inject IJSRuntime js
+
+<div class="chart-container" >
+  <canvas id="areaChart"></canvas>
+</div>
+
+@code{
+  protected override async Task OnInitializedAsync()
+  {
+    await Task.Delay(1000);
+    await js.InvokeVoidAsync("createAreaChart_simple1", "enero,febrero,marzo", "35,44,12");
+  }
+}
