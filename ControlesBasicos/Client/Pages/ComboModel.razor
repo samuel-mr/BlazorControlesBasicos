@@ -2,7 +2,7 @@
 
 <select @bind="@MonedaSelected">
   <option value="0">- seleccionar -</option>
-  @if (MonedaList == null)
+  @if (MonedaList != null)
   {
     @foreach (var item in MonedaList)
     {
@@ -15,7 +15,6 @@
   Moneda seleccionada: @MonedaSelected
 </div>
 @code{
-
 
   List<Moneda> MonedaList;
   int MonedaSelected = 0;
@@ -32,6 +31,7 @@
 
     return base.OnInitializedAsync();
   }
+
 
 
   class Moneda

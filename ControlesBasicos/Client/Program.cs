@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Text;
 using Microsoft.AspNetCore.Blazor.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using ControlesBasicos.Client.HelperJS;
 
 namespace ControlesBasicos.Client
 {
@@ -13,6 +14,8 @@ namespace ControlesBasicos.Client
     {
       var builder = WebAssemblyHostBuilder.CreateDefault(args);
       builder.RootComponents.Add<App>("app");
+
+      builder.Services.AddScoped<ILogMessage, ToastrMessage>();
 
       await builder.Build().RunAsync();
     }

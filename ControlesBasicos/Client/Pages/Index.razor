@@ -1,13 +1,21 @@
 ﻿@page "/"
 @inject IJSRuntime  js
+@inject ILogMessage  logui
 
-<h1>Hello, world!</h1>
+<h1>Ejemplos básicos</h1>
 
-<button @onclick="agregar">X</button>
+<button @onclick="ShowMessageLogUI">Mensajes Log UI</button>
 
 @{
-  async Task agregar()
+  async Task ShowMessageLogUI()
   {
-    await js.InvokeVoidAsync("ejemplo");
+    await logui.Success("success!");
+    await Task.Delay(500);
+    await logui.Info("info");
+    await Task.Delay(500);
+    await logui.Warning("warning");
+    await Task.Delay(500);
+    await logui.Error("error");
+    // await js.InvokeVoidAsync(,);
   }
 }
