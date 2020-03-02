@@ -1,0 +1,14 @@
+﻿<div class="card">
+  <div class="card-header">@Titulo</div>
+  <div class="card-body">@ChildContent</div>
+
+  <button class="btn btn-primary" @onclick="OnClickCallback">@ButtonText</button>
+</div>
+
+@code{
+  [Parameter] public string Titulo { get; set; }
+  [Parameter] public string ButtonText { get; set; }
+  [Parameter] public RenderFragment ChildContent { get; set; }
+  [Parameter] public EventCallback<MouseEventArgs> OnClickCallback { get; set; }
+
+}

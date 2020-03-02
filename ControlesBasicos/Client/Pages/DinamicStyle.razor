@@ -1,0 +1,25 @@
+﻿@page "/dynamicstyle"
+
+@using System.Globalization
+
+<h1 style="font-style:@customStyle">@titulo</h1>
+
+<div>
+  <input type="checkbox" id="chkIsCursiva" @bind="isCustomChecked" />
+  <label for="chkIsCursiva">Usar estilo</label>
+</div>
+
+<button type="button" class="btn btn-primary" @onclick="Ejecutar">Aplicar</button>
+
+@code{
+  private static TextInfo info = CultureInfo.CurrentCulture.TextInfo;
+  string titulo = info.ToTitleCase("Estilos dinánicos");
+  string customStyle = "normal";
+  bool isCustomChecked = false;
+
+  void Ejecutar()
+  {
+    customStyle = isCustomChecked ? "italic" : "normal";
+  }
+
+}
