@@ -10,6 +10,15 @@
           </button>
         </div>
         <div class="modal-body">
+          <!-- Serch -->
+          <div>
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="txtNombreSearch" class="sr-only">Buscar</label>
+              <input class="form-control" id="txtNombreSearch" placeholder="Nombre de la persona" @onchange="SearchChanged">
+            </div>
+            <button class="btn btn-primary mb-2">Buscar</button>
+          </div>
+          <!-- Table-->
           <table class="table table-sm w-auto table-hover">
             <thead>
               <tr>
@@ -18,7 +27,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach (var item in PersonaList)
+              @foreach (var item in PersonaFiltered)
               {
                 <tr @onclick="@(()=> Seleccionar(item))">
                   <td>@item.PersonaId</td>
@@ -37,12 +46,14 @@
   [Parameter] public EventCallback<CloseEvenItem> CloseEventCallback { get; set; }
 
   public bool ShowDialog { get; private set; }
-  List<Persona> PersonaList;
+  List<Persona> PersonaCompleteList;
+  List<Persona> PersonaFiltered;
 
 
   public void Show(List<Persona> items)
   {
-    PersonaList = items;
+    PersonaCompleteList = items;
+    PersonaFiltered = PersonaCompleteList;
     ShowDialog = true;
     StateHasChanged(); // fuerza a que se reevalue la UI
   }
@@ -54,5 +65,12 @@
   protected async Task Seleccionar(Persona persona)
   {
     await CloseEventCallback.InvokeAsync(new CloseEvenItem() { Value = persona.PersonaId, Text = persona.Nombre });
+  }
+
+  async Task SearchChanged(ChangeEventArgs e)
+  {
+    var valueToSearch = e.Value.ToString();
+    Console.WriteLine(valueToSearch);
+    PersonaFiltered = PersonaCompleteList.Where(x => x.Nombre.Contains(valueToSearch,StringComparison.OrdinalIgnoreCase)).ToList();
   }
 }
