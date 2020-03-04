@@ -1,0 +1,36 @@
+﻿@page "/buttonDisplay"
+<div>
+    <button class=@colorTour @onclick="@DisplayAndColorTour">Tours</button>
+    <button class=@colorHotel @onclick="@DisplayAndColorHotel">Hotels</button>
+</div>
+
+<div>&nbsp;</div>
+<div>
+    <button class="btn btn-success" style="display:@stateTour">List Tours</button>
+    <button class="btn btn-success" style="display:@stateHotel">List Hotels</button>
+</div>
+
+
+@code{
+    string stateTour = "none";
+    string stateHotel = "none";
+
+    string colorTour = "btn btn-outline-info";
+    string colorHotel = "btn btn-outline-info";
+
+    void DisplayAndColorTour()
+    {
+        stateTour = "normal";
+        stateHotel = "none";
+        colorTour = "btn btn-info";
+        colorHotel = "btn btn-outline-info";
+    }
+
+    void DisplayAndColorHotel()
+    {
+        stateTour = "none";
+        stateHotel = "normal";
+        colorTour = "btn btn-outline-info";
+        colorHotel = "btn btn-info";
+    }
+}
