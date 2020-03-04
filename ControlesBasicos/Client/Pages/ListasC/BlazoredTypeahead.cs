@@ -115,7 +115,8 @@ namespace ControlesBasicos.Client.Pages.ListasC
       _debounceTimer.Elapsed += Search;
 
       _editContext = CascadedEditContext;
-      _fieldIdentifier = IsMultiselect ? FieldIdentifier.Create(ValuesExpression) : FieldIdentifier.Create(ValueExpression);
+      // TODO: Pendiente revisar porque sale error
+      //_fieldIdentifier = IsMultiselect ? FieldIdentifier.Create(ValuesExpression) : FieldIdentifier.Create(ValueExpression);
 
       Initialize();
     }
