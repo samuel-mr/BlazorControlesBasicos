@@ -3,7 +3,14 @@
 
 @using ControlesBasicos.Shared.DTO
 
-
+<p>Prerequisitos:</p>
+<ul>
+  <li>wwwroot/customblazored/blazored-typeahead.css</li>
+  <li>wwwroot/customblazored/blazored-typeahead.js</li>
+  <li>Pages/ListasC/BlazoredTypeahead.cs</li>
+  <li>Pages/ListasC/BlazoredTypeahead.razor</li>
+  <li>Pages/ListasC/ListasCInterop.cs</li>
+</ul>
 
 <h3>BlazoredTypeahead</h3>
 <BlazoredTypeahead SearchMethod="@SearchItemsTask"
@@ -81,9 +88,10 @@
 
   void Enviar()
   {
+    resumen = "";
     foreach (var item in ElementosSeleccionados)
     {
-      resumen += $"Id:{item.Id} Nombre:{item.Nombre} Edad:{item.Edad}\n";
+      resumen += $"</br>Id:{item.Id} Nombre:{item.Nombre} Edad:{item.Edad}";
     }
   }
 }
