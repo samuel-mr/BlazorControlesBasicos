@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlesBasicos.Client.Pages.Listas
+namespace ControlesBasicos.Shared.DTO
 {
-  public class Persona
-  {
-    public int PersonaId { get; set; }
+    public class PersonaSeleccionadaItem
+    {
+    public int Id { get; set; }
     public string Nombre { get; set; }
     public int Edad { get; set; }
   }

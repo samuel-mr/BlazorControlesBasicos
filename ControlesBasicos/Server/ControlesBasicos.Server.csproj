@@ -13,8 +13,4 @@
     <ProjectReference Include="..\Shared\ControlesBasicos.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

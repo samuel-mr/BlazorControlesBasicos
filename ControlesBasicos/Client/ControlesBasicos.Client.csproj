@@ -15,7 +15,6 @@
     <ProjectReference Include="..\Shared\ControlesBasicos.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\ListasB\" />
     <Folder Include="wwwroot\bootstrap\" />
   </ItemGroup>
 

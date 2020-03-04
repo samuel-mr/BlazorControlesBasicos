@@ -1,0 +1,39 @@
+﻿@page "/listas/ejemploB"
+@inject HttpClient httpClient
+
+@*@using Blazored.Typeahead*@
+@using ControlesBasicos.Shared.DTO
+
+<h3>BlazoredTypeahead</h3>
+<!--
+<BlazoredTypeahead SearchMethod="@SearchItemsTask"
+                   @bind-Value="@PersonaSelected">
+  <SelectedTemplate>
+    @context.Nombre
+  </SelectedTemplate>
+  <ResultTemplate>
+    @context.Nombre (@context.Id)
+  </ResultTemplate>
+  <NotFoundTemplate>
+    No se encontraron coincidencias.
+  </NotFoundTemplate>
+</BlazoredTypeahead>
+-->
+<button>Aceptar</button>
+@code{
+
+  List<GetAllPersonItem> PersonasList { get; set; }
+  public GetAllPersonItem PersonaSelected { get; set; }
+
+  protected override async Task OnInitializedAsync()
+  {
+    var response = await httpClient.GetJsonAsync<List<GetAllPersonItem>>($"api/personas/getall");
+    PersonasList = response;
+  }
+
+  private async Task<IEnumerable<GetAllPersonItem>> SearchItemsTask(string searchText)
+  {
+    return await Task.FromResult(PersonasList.Where(x => x.Nombre.ToLower().Contains(searchText.ToLower())).ToList());
+  }
+
+}
