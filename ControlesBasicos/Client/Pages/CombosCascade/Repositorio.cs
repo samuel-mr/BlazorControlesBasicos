@@ -33,7 +33,7 @@ namespace ControlesBasicos.Client.Pages.CombosCascade
 
     public async Task<List<Genero>> GetGeneros()
     {
-      await Task.Delay(2000);
+      await Task.Delay(1000);
 
       var sql = from j in TablaGeneros()
                 select j;
@@ -42,7 +42,7 @@ namespace ControlesBasicos.Client.Pages.CombosCascade
     }
     public async Task<List<Juego>> GetJuegosByGenero(int generoId)
     {
-      await Task.Delay(2000);
+      await Task.Delay(1000);
 
       var sql = from j in TablaJuegos()
                 where j.GeneroId == generoId

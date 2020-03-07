@@ -1,10 +1,12 @@
 ﻿@page "/combo-cascade"
 
-  <EditForm Model="@VentaModel" OnValidSubmit="@RegistrarEnBaseDeDatos">
-    <DataAnnotationsValidator />
+<EditForm Model="@VentaModel" OnValidSubmit="@RegistrarEnBaseDeDatos">
+  <DataAnnotationsValidator />
 
 
-    <!------------------------   GENERO  -------------------------------------->
+  <!------------------------   GENERO  -------------------------------------->
+  <div>
+    <label>Genero: @generoId</label>
     <InputSelectNumber class="form-control"
                        ValueChanged="@((int value) =>GeneroHasChanged(value))"
                        ValueExpression="@(()=> generoId)"
@@ -23,30 +25,36 @@
       }
     </InputSelectNumber>
 
+  </div>
 
-    <!------------------------   JUEGO  -------------------------------------->
+
+  <!------------------------   JUEGO  -------------------------------------->
+  <div>
+    <label>Juego: @VentaModel.JuegId</label>
     <InputSelectNumber class="form-control"
                        @bind-Value="@VentaModel.JuegId">
       <option value="0">--Seleccionar Juego--</option>
       @foreach (var item in JuegosList)
-      {
-        @if (item.Id == VentaModel.JuegId)
-        {
-          <option selected value="@item.Id">@item.Titulo</option>
-        }
-        else
-        {
-          <option value="@item.Id">@item.Titulo</option>
-        }
-      }
+{
+@if (item.Id == VentaModel.JuegId)
+{
+<option selected value="@item.Id">@item.Titulo</option>
+}
+else
+{
+<option value="@item.Id">@item.Titulo</option>
+}
+/**/
+/**/
+/**/
+}
+      /**/
     </InputSelectNumber>
+  </div>
 
 
-  </EditForm>
 
-<p>
-  Moneda seleccionada:
-</p>
+</EditForm>
 
 @code{
   public Venta VentaModel { get; set; } = new Venta();
@@ -65,25 +73,23 @@
 
   private async Task GeneroHasChanged(int value)
   {
-    var result = await (new Repositorio()).GetJuegosByGenero(value);
-    JuegosList = result;
+    generoId = value;
+    VentaModel.JuegId = 0;
+
+    if (value == 0)
+    {
+      JuegosList.Clear();
+    }
+    else
+    {
+      var result = await (new Repositorio()).GetJuegosByGenero(value);
+      JuegosList = result;
+    }
   }
 
   async Task RegistrarEnBaseDeDatos()
   {
     await Task.Delay(2000);
   }
-  /*
-
-  List<Genero> ListaMonedas ;
-  int MonedaSelected = 0;
-
-  protected override Task OnInitializedAsync()
-  {
-
-    return base.OnInitializedAsync();
-  }
-
-  */
-
+ 
 }
