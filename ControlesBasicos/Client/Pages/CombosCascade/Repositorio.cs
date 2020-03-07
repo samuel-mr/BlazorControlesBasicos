@@ -40,6 +40,7 @@ namespace ControlesBasicos.Client.Pages.CombosCascade
 
       return sql.ToList();
     }
+
     public async Task<List<Juego>> GetJuegosByGenero(int generoId)
     {
       await Task.Delay(1000);

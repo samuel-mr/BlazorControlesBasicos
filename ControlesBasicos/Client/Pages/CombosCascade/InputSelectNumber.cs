@@ -23,7 +23,7 @@ namespace ControlesBasicos.Client.Pages.CombosCascade
         else
         {
           result = default;
-          validationErrorMessage = "The chosen value is not a valid number.";
+          validationErrorMessage = "El valor seleccionado no es un número válido.";
           return false;
         }
       }
