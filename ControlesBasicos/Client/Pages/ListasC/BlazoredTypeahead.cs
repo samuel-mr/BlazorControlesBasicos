@@ -84,6 +84,7 @@ namespace ControlesBasicos.Client.Pages.ListasC
 
     protected override void OnInitialized()
     {
+
       if (SearchMethod == null)
       {
         throw new InvalidOperationException($"{GetType()} requires a {nameof(SearchMethod)} parameter.");
@@ -156,6 +157,7 @@ namespace ControlesBasicos.Client.Pages.ListasC
 
     private async Task HandleClear()
     {
+      await JSRuntime.Log("HandleClear");
       SearchText = "";
       IsShowingMask = false;
 
@@ -176,6 +178,8 @@ namespace ControlesBasicos.Client.Pages.ListasC
 
     private async Task HandleClickOnMask()
     {
+
+      await JSRuntime.Log("HandleClickOnMask");
       SearchText = "";
       IsShowingMask = false;
 
@@ -230,6 +234,7 @@ namespace ControlesBasicos.Client.Pages.ListasC
       // You can only start searching if it's not a special key (Tab, Enter, Escape, ...)
       if (args.Key.Length == 1)
       {
+        await JSRuntime.Log("NadKeyUpOnMask with Length == 1");
         IsShowingMask = false;
         await Task.Delay(250); // Possible race condition here.
         await ListasCInterop.Focus(JSRuntime, _searchInput);
@@ -336,6 +341,8 @@ namespace ControlesBasicos.Client.Pages.ListasC
 
     private async void Search(Object source, ElapsedEventArgs e)
     {
+      await JSRuntime.Log("Blazored Search");
+
       IsSearching = true;
       await InvokeAsync(StateHasChanged);
       Suggestions = (await SearchMethod?.Invoke(_searchText)).Take(MaximumSuggestions).ToArray();
@@ -348,6 +355,12 @@ namespace ControlesBasicos.Client.Pages.ListasC
 
     private async Task SelectResult(TItem item)
     {
+      await JSRuntime.Log("Select Result");
+      await JSRuntime.Log("item:" + item);
+      await JSRuntime.Log("IsMultiselect:" + IsMultiselect.ToString());
+
+      await JSRuntime.Log("Blazored SelectResult:");
+
       var value = ConvertMethod(item);
 
       if (IsMultiselect)
@@ -366,8 +379,9 @@ namespace ControlesBasicos.Client.Pages.ListasC
         Value = value;
         await ValueChanged.InvokeAsync(value);
       }
-
-      _editContext?.NotifyFieldChanged(_fieldIdentifier);
+      await JSRuntime.Log("Blazored SelectResult 2:");
+      //TODO : corregir esto 
+      //_editContext?.NotifyFieldChanged(_fieldIdentifier);
 
       if (IsMultiselect)
       {
@@ -375,9 +389,14 @@ namespace ControlesBasicos.Client.Pages.ListasC
       }
       else
       {
+        // TODO : esra mask !!!
+        await JSRuntime.Log("Blazored MASK:" + _mask);
         await Task.Delay(250);
-        await ListasCInterop.Focus(JSRuntime, _mask);
+        // await ListasCInterop.Focus(JSRuntime, _mask);
+        await ListasCInterop.Focus(JSRuntime, _searchInput);
       }
+
+      await JSRuntime.Log("Blazored SelectResult: FINISH");
     }
 
     private bool ShouldShowSuggestions()
