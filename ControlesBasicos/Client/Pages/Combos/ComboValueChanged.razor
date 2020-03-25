@@ -1,0 +1,51 @@
+﻿@page "/combo/valuechanged"
+
+<select @onchange="OnSelectedTask">
+    <option value="0">- seleccionar -</option>
+    @if (MonedaList != null)
+    {
+        @foreach (var item in MonedaList)
+        {
+            @if (item.Id == MonedaSelected)
+            {
+                <option value="@item.Id" selected>@item.Nombre</option>
+            }
+            else
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        }
+    }
+</select>
+
+<div>
+    Moneda seleccionada: @MonedaSelected
+</div>
+@code{
+
+    List<Moneda> MonedaList;
+    int MonedaSelected = 0;
+
+    protected override Task OnInitializedAsync()
+    {
+        MonedaList = new List<Moneda>();
+
+        MonedaList.Add(new Moneda() { Id = 1, Nombre = "S/. SOLES" });
+        MonedaList.Add(new Moneda() { Id = 2, Nombre = "$ DOLARES" });
+        MonedaList.Add(new Moneda() { Id = 3, Nombre = "€ EUROS" });
+
+        MonedaSelected = 2;
+        return base.OnInitializedAsync();
+    }
+
+    class Moneda
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+    }
+    async Task OnSelectedTask(ChangeEventArgs args)
+    {
+        MonedaSelected = int.Parse(args.Value.ToString());
+    }
+}
+

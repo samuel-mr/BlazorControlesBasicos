@@ -7,12 +7,15 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
-        <li class="nav-item px-3">
+        <li class="nav-item-header px-3">
+            <button class="nav-item-buttongrup" @onclick="ToggleBasico">Básico</button>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
             <NavLink class="nav-link" href="databinding/a">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Data Binding A
             </NavLink>
         </li>
-        <li class="nav-item px-3">
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
             <NavLink class="nav-link" href="databinding/b">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Data Binding B
             </NavLink>
@@ -28,6 +31,11 @@
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="combo-model">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Combo Model
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/combo/valuechanged">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Combo ValueChanged
             </NavLink>
         </li>
         <li class="nav-item px-3">
@@ -101,11 +109,19 @@
 
 @code {
     private bool collapseNavMenu = true;
+    private bool collapseBasico = false;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private string GrupoBasico_Display => collapseBasico ? "none" : null;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+    private void ToggleBasico()
+    {
+        collapseBasico = !collapseBasico;
+        Console.WriteLine(collapseBasico);
     }
 }
