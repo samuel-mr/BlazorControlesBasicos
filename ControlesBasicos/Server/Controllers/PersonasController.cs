@@ -13,6 +13,12 @@ namespace ControlesBasicos.Server.Controllers
   public class PersonasController : ControllerBase
   {
 
+    [HttpGet("get")]
+    public async Task<ActionResult<List<GetAllPersonItem>>> Get()
+    {
+      
+      return StatusCode(500, "ERROR");
+    }
 
     [HttpGet("getall")]
     public async Task<ActionResult<List<GetAllPersonItem>>> GetAllPerson()

@@ -3,20 +3,23 @@
 <h1>Data binding 2</h1>
 
 <p>
-  Fecha: <label>@Fecha</label>
+    Fecha: <label>@Fecha</label>
 </p>
 <p>
-  Default: <input @bind="Fecha" />
+    Default: <input @bind="Fecha" />
 </p>
 <p>
-  yyyy-MM-dd: <input @bind="Fecha" @bind:format="yyyy-MM-dd" />
+    yyyy-MM-dd: <input @bind="Fecha" @bind:format="yyyy-MM-dd" />
 </p>
 <p>
-  dd-MM-yyyy: <input @bind="Fecha" @bind:format="dd-MM-yyyy" />
+    dd-MM-yyyy: <input @bind="Fecha" @bind:format="dd-MM-yyyy" />
+</p>
+<p>
+    Precio: <input @bind="precio" />
 </p>
 
 @code{
 
-  DateTime Fecha = new DateTime(2020, 3, 30);
-
+    DateTime Fecha = new DateTime(2020, 3, 30);
+    decimal precio = 45.1234M;
 }

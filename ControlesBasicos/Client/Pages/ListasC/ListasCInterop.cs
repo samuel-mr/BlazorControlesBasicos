@@ -19,5 +19,9 @@ namespace ControlesBasicos.Client.Pages.ListasC
     {
       return jsRuntime.InvokeAsync<object>("blazoredTypeahead.addKeyDownEventListener", element);
     }
+    public static async ValueTask Log(this IJSRuntime jsRuntime, string titulo)
+    {
+      await jsRuntime.InvokeVoidAsync("console.log", titulo);
+    }
   }
 }
