@@ -1,0 +1,21 @@
+﻿@page "/databinding/betweenComponents"
+
+<div style="background-color:#ff6a00;margin:5px">
+  <h3>Padre</h3>
+  <p>@Title</p>
+  <input type="text" @bind-value="@Title" />
+  <button @onclick="Update">Cambiar</button>
+</div>
+
+<ControlesBasicos.Client.Pages.DataBinding.DataBindingBetweenComponents_Component @bind-Title="Title" />
+<ControlesBasicos.Client.Pages.DataBinding.DataBindingBetweenComponentsOnKeyPress_Component @bind-Title="Title" />
+
+@code{
+  private string Title = "Creado en padre";
+
+  void Update()
+  {
+    Title = "Cambiado en padre";
+  }
+
+}

@@ -1,0 +1,23 @@
+﻿@page "/databinding/c"
+
+<h1>Data binding (explicit onChange)</h1>
+<p>
+  OnChange: @StringOnChange
+</p>
+<p>
+  OnKeyPress: @StringOnKeyPress (@CantKeyPress)
+</p>
+
+OnChange: <input value="@StringOnChange" @onchange="@((ChangeEventArgs __e) => StringOnChange = __e.Value.ToString())" />
+OnKeyPress: <input value="@StringOnKeyPress" @onkeypress="@(OnKeyPress)" @onchange="@((ChangeEventArgs __e) => StringOnKeyPress = __e.Value.ToString())"/>
+@code {
+  private string StringOnChange = "";
+
+  private int CantKeyPress = 0;
+  private string StringOnKeyPress= "";
+
+  void OnKeyPress(KeyboardEventArgs e)
+  {
+    CantKeyPress++;
+  }
+}
