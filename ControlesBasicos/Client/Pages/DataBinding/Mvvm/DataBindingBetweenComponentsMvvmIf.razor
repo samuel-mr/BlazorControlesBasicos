@@ -8,10 +8,10 @@
   <input @bind-value="Title" @bind-value:event="oninput" />
 </p>
 <p style="background-color:burlywood">
-  <DataBindingBetweenComponentsMvvmChild TitleFromParent="@Title" TitleChanged="@OnTitleChanged"></DataBindingBetweenComponentsMvvmChild>
+  <DataBindingBetweenComponentsMvvmIfChild Title="@Title" TitleChanged="@OnTitleChanged"></DataBindingBetweenComponentsMvvmIfChild>
 </p>
 <p style="background-color:#ff6a00">
-  <DataBindingBetweenComponentsMvvmChild TitleFromParent="@title" TitleChanged="@OnTitleChanged"></DataBindingBetweenComponentsMvvmChild>
+  <DataBindingBetweenComponentsMvvmIfChild Title="@title" TitleChanged="@OnTitleChanged"></DataBindingBetweenComponentsMvvmIfChild>
 </p>
 @code {
   private string title = "";

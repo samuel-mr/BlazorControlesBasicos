@@ -7,8 +7,8 @@
   <button @onclick="Update">Cambiar</button>
 </div>
 
-<ControlesBasicos.Client.Pages.DataBinding.DataBindingBetweenComponents_Component @bind-Title="Title" />
-<ControlesBasicos.Client.Pages.DataBinding.DataBindingBetweenComponentsOnKeyPress_Component @bind-Title="Title" />
+<DataBindingBetweenComponents_Component @bind-Title="Title" />
+<DataBindingBetweenComponentsOnKeyPress_Component @bind-Title="Title" />
 
 @code{
   private string Title = "Creado en padre";

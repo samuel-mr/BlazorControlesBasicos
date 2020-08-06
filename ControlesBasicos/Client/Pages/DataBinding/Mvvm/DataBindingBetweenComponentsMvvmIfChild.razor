@@ -3,25 +3,9 @@
 <input @bind-value="Title" @bind-value:event="oninput" />
 
 @code {
-  private string _TitleFromParent;
-  [Parameter]
-  public string TitleFromParent
-  {
-    get
-    {
-      return _TitleFromParent;
-    }
-    set
-    {
-      if (_TitleFromParent != value)
-      {
-        _TitleFromParent = value;
-        _Title = value;
-      }
-    }
-  }
-
+ 
   private string _Title;
+  [Parameter]
   public string Title
   {
     get
