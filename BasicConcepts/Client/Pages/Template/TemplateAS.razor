@@ -1,0 +1,31 @@
+﻿@page "/template/a"
+
+@using ControlesBasicos.Client.Pages.Template
+
+<div>Ejemplo</div>
+
+<TemplateAComponente Items="Personas" TItem="Persona">
+    <Cabecera>
+        <h3>Romános de elite</h3>
+    </Cabecera>
+    <ItemTemplate Context="item">
+        <span>@item.Nombre</span>
+    </ItemTemplate>
+</TemplateAComponente>
+
+@code{
+
+    List<Persona> Personas { get; set; } = new List<Persona>();
+
+    protected override void OnInitialized()
+    {
+        Personas.Add(new Persona() { Nombre = "Tácito" });
+        Personas.Add(new Persona() { Nombre = "Cicerón" });
+        Personas.Add(new Persona() { Nombre = "Marco Aurelio" });
+    }
+
+    class Persona
+    {
+        public string Nombre { get; set; }
+    }
+}

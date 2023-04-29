@@ -1,0 +1,33 @@
+﻿@page "/databinding/tree"
+<h3>Tree with objects</h3>
+
+<p>
+  Title:<input @bind-value="MyBook.Title" @bind-value:event="oninput" />
+</p>
+<p>
+  Year:<input type="number" @bind-value="MyBook.Year" @bind-value:event="oninput" />
+</p>
+<p style="background-color:burlywood">
+  <DataBindingTreeChildString Title="@MyBook.Title" TitleChanged="@OnTitleChanged"></DataBindingTreeChildString>
+</p>
+<p style="background-color:#ff6a00">
+  <DataBindingTreeChildNumber Number="@MyBook.Year" NumberChanged="@OnNumberChanged"></DataBindingTreeChildNumber>
+</p>
+@code {
+  public Book MyBook { get; set; }
+
+  protected override void OnInitialized()
+  {
+    MyBook = new Book();
+  }
+
+  void OnTitleChanged(string value)
+  {
+    MyBook.Title = value;
+  }
+  void OnNumberChanged(int value)
+  {
+    MyBook.Year = value;
+  }
+
+}

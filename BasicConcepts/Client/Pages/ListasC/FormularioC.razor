@@ -1,0 +1,97 @@
+﻿@page "/listas/ejemploC"
+@inject HttpClient httpClient
+
+@using ControlesBasicos.Shared.DTO
+
+<p>Prerequisitos:</p>
+<ul>
+  <li>wwwroot/customblazored/blazored-typeahead.css</li>
+  <li>wwwroot/customblazored/blazored-typeahead.js</li>
+  <li>Pages/ListasC/BlazoredTypeahead.cs</li>
+  <li>Pages/ListasC/BlazoredTypeahead.razor</li>
+  <li>Pages/ListasC/ListasCInterop.cs</li>
+</ul>
+
+<h3>BlazoredTypeahead</h3>
+<BlazoredTypeahead SearchMethod="@SearchItemsTask"
+                   Value="@PersonaSelected"
+                   ValueChanged="@((GetAllPersonItem item)=> ElementoSeleccionado(item))">
+  <SelectedTemplate>
+    @context.Nombre
+  </SelectedTemplate>
+  <ResultTemplate>
+    @context.Nombre (@context.Id)
+  </ResultTemplate>
+  <NotFoundTemplate>
+    No se encontraron coincidencias.
+  </NotFoundTemplate>
+</BlazoredTypeahead>
+
+
+<table class="table table-sm w-auto">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in ElementosSeleccionados)
+    {
+      <tr>
+        <td>@item.Id</td>
+        <td>@item.Nombre</td>
+        <td> <input type="text" class="form-control" placeholder="Nombre" @bind="item.Edad"></td>
+        <td><span @onclick="@(() => ElementosSeleccionados.Remove(item))" class="badge badge-primary badge-pill" style="cursor: pointer">X</span></td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<button @onclick="Enviar">Enviar</button>
+<p>
+  @resumen
+</p>
+
+@code{
+
+  List<GetAllPersonItem> ListaOriginal { get; set; }
+  public GetAllPersonItem PersonaSelected { get; set; }
+
+  public List<PersonaSeleccionadaItem> ElementosSeleccionados { get; set; } = new List<PersonaSeleccionadaItem>();
+  PersonaSeleccionadaItem itemArrastrado;
+
+  string resumen = "";
+
+  protected override async Task OnInitializedAsync()
+  {
+    var response = await httpClient.GetJsonAsync<List<GetAllPersonItem>>($"api/personas/getall");
+    ListaOriginal = response;
+  }
+
+  void ElementoSeleccionado(GetAllPersonItem item)
+  {
+    ElementosSeleccionados.Add(new PersonaSeleccionadaItem()
+    {
+      Id = item.Id,
+      Nombre = item.Nombre,
+      Edad = 0
+    });
+  }
+
+  private async Task<IEnumerable<GetAllPersonItem>> SearchItemsTask(string searchText)
+  {
+    return await Task.FromResult(ListaOriginal.Where(x => x.Nombre.ToLower().Contains(searchText.ToLower())).ToList());
+  }
+
+
+  void Enviar()
+  {
+    resumen = "";
+    foreach (var item in ElementosSeleccionados)
+    {
+      resumen += $"</br>Id:{item.Id} Nombre:{item.Nombre} Edad:{item.Edad}";
+    }
+  }
+}

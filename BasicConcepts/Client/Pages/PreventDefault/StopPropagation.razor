@@ -1,0 +1,38 @@
+﻿@page "/preventdefault/stopPropagation"
+@using System.ComponentModel.DataAnnotations
+
+  <EditForm Model="NaturalPersonModel" OnValidSubmit="SendData">
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Número celular:</label>
+      <div class="col-sm-10">
+        <InputText class="form-control" @bind-Value="@NaturalPersonModel.FirstName" />
+        <ValidationMessage For="@(() => NaturalPersonModel.FirstName)" />
+      </div>
+    </div>
+
+    <button type="button" @onclick="SearchZoneTask" @onclick:stopPropagation="true">Buscar</button>
+
+    <button type="submit">Enviar</button>
+    <DataAnnotationsValidator />
+  </EditForm>
+
+@code{
+  NaturalPerson NaturalPersonModel { get; set; } = new NaturalPerson();
+
+  async Task SearchZoneTask()
+  {
+    //await SearchZoneReference.InitializeTask(distritoToSearch);
+  }
+
+  async Task SendData()
+  {
+    Console.WriteLine("Enviado");
+  }
+
+  public class NaturalPerson
+  {
+    [Required(ErrorMessage = "Ingrese el Nombre.")]
+    public string FirstName { get; set; }
+  }
+}

@@ -1,0 +1,37 @@
+﻿@page "/databinding/treemvvmif"
+<h3>DataBindingBetweenComponentsMvvm</h3>
+
+<p>
+  <input @bind-value="Title" @bind-value:event="oninput" />
+</p>
+<p>
+  <input @bind-value="Title" @bind-value:event="oninput" />
+</p>
+<p style="background-color:burlywood">
+  <DataBindingBetweenComponentsMvvmIfChild Title="@Title" TitleChanged="@OnTitleChanged"></DataBindingBetweenComponentsMvvmIfChild>
+</p>
+<p style="background-color:#ff6a00">
+  <DataBindingBetweenComponentsMvvmIfChild Title="@title" TitleChanged="@OnTitleChanged"></DataBindingBetweenComponentsMvvmIfChild>
+</p>
+@code {
+  private string title = "";
+  public string Title
+  {
+    get
+    {
+      return title;
+    }
+    set
+    {
+      if (title != value)
+      {
+        title = value;
+      }
+    }
+  }
+
+  void OnTitleChanged(string value)
+  {
+    Title = value;
+  }
+}

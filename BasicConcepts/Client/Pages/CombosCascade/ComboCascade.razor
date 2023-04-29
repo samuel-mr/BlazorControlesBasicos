@@ -1,0 +1,92 @@
+﻿@page "/combo-cascade"
+@using BasicConcepts.Client.Pages.CombosCascade;
+
+<EditForm Model="@VentaModel" OnValidSubmit="@RegistrarEnBaseDeDatos">
+  <DataAnnotationsValidator />
+
+
+  <!------------------------   GENERO  -------------------------------------->
+  <div>
+    <label>Genero: @generoId</label>
+    <InputSelectNumber class="form-control"
+                       ValueChanged="@((int value) =>GeneroHasChanged(value))"
+                       ValueExpression="@(()=> generoId)"
+                       Value="@generoId">
+      <option value="0">--Seleccionar género--</option>
+      @foreach (var item in GeneroList)
+      {
+        @if (item.Id == generoId)
+        {
+          <option selected value="@item.Id">@item.Descripcion</option>
+        }
+        else
+        {
+          <option value="@item.Id">@item.Descripcion</option>
+        }
+      }
+    </InputSelectNumber>
+
+  </div>
+
+
+  <!------------------------   JUEGO  -------------------------------------->
+  <div>
+    <label>Juego: @VentaModel.JuegId</label>
+    <InputSelectNumber class="form-control"
+                       @bind-Value="@VentaModel.JuegId">
+      <option value="0">--Seleccionar Juego--</option>
+      @foreach (var item in JuegosList)
+      {
+          @if (item.Id == VentaModel.JuegId)
+          {
+              <option selected value="@item.Id">@item.Titulo</option>
+          }
+          else
+          {
+              <option value="@item.Id">@item.Titulo</option>
+          }
+      }
+    </InputSelectNumber>
+  </div>
+
+
+
+</EditForm>
+
+@code{
+  public Venta VentaModel { get; set; } = new Venta();
+
+  //Almacena temporalemtne el género seleccionado
+  private int generoId = 0;
+
+  List<Genero> GeneroList = new List<Genero>();
+  List<Juego> JuegosList = new List<Juego>();
+
+  protected override async Task OnInitializedAsync()
+  {
+    var result = await (new Repositorio()).GetGeneros();
+    GeneroList = result;
+  }
+
+  private async Task GeneroHasChanged(int value)
+  {
+    generoId = value;
+    VentaModel.JuegId = 0;
+
+    if (value == 0)
+    {
+      JuegosList.Clear();
+    }
+    else
+    {
+      var result = await (new Repositorio()).GetJuegosByGenero(value);
+      JuegosList = result;
+    }
+  }
+
+  async Task RegistrarEnBaseDeDatos()
+  {
+    await Task.Delay(2000);
+  }
+ 
+}

@@ -1,0 +1,16 @@
+﻿<div style="background-color:#00ffff;margin:5px">
+  <h3>Hijo</h3>
+  <input type="text" @bind-value="@Title" />
+  <button type="button" @onclick="Update">Actualizar</button>
+</div>
+
+@code{
+  [Parameter] public string Title { get; set; }
+  [Parameter] public EventCallback<string> TitleChanged { get; set; }
+
+  async Task Update()
+  {
+    Title = "Cambiado en hijo";
+    await TitleChanged.InvokeAsync(Title);
+  }
+}

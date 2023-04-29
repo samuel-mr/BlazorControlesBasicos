@@ -1,0 +1,48 @@
+﻿@page "/databinding/mvvm"
+
+<h3>DataBindingMvvm</h3>
+
+<p>
+  Centímetros (@countCentrimetros): <input @bind-value="Centimetros" @bind-value:event="oninput" />
+</p>
+<p>
+  Pulgadas (@countPulgadas): <input @bind-value="Pulgadas" @bind-value:event="oninput" />
+</p>
+
+@code {
+  int countCentrimetros = 0;
+  int countPulgadas = 0;
+
+
+  private double centimetros = 2.54;
+  public double Centimetros
+  {
+    get
+    {
+      return centimetros;
+    }
+    set
+    {
+      centimetros = value;
+      pulgadas = centimetros / 2.54d;
+      countCentrimetros++;
+    }
+  }
+
+
+  private double pulgadas = 1;
+  public double Pulgadas
+  {
+    get
+    {
+      return pulgadas;
+    }
+    set
+    {
+      pulgadas = value;
+      centimetros = 2.54 * pulgadas;
+      countPulgadas++;
+    }
+  }
+
+}

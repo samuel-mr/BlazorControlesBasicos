@@ -1,0 +1,37 @@
+﻿<h3>in child</h3>
+
+<input @bind-value="Title" @bind-value:event="oninput" />
+
+@code {
+  private string _TitleFromParent;
+  [Parameter]
+  public string TitleFromParent
+  {
+    get
+    {
+      return _TitleFromParent;
+    }
+    set
+    {
+      _TitleFromParent = value;
+      _Title = value;
+    }
+  }
+
+  private string _Title;
+  public string Title
+  {
+    get
+    {
+      return _Title;
+    }
+    set
+    {
+      _Title = value;
+      TitleChanged.InvokeAsync(value);
+    }
+  }
+
+  [Parameter]
+  public EventCallback<string> TitleChanged { get; set; }
+}

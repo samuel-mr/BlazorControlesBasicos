@@ -1,0 +1,19 @@
+﻿@page "/preventdefault/example1"
+
+Cantidad: <input value="@Count" @onkeypress="KeyHandler" @onkeypress:preventDefault/>
+
+@code{
+  int Count = 0;
+
+  private void KeyHandler(KeyboardEventArgs e)
+  {
+    if (e.Key == "+")
+    {
+      Count++;
+    }
+    else if (e.Key == "-")
+    {
+      Count--;
+    }
+  }
+}

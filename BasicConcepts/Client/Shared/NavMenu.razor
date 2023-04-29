@@ -1,0 +1,200 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">BasicConcepts</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            </NavLink>
+        </div>
+
+        <li class="nav-item-header px-3">
+            <button class="nav-item-buttongrup" @onclick="ToggleBasico" @onclick:stopPropagation="true">DataBinding</button>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+            <NavLink class="nav-link" href="databinding/a">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>  Binding A
+            </NavLink>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+            <NavLink class="nav-link" href="databinding/b">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>  Binding B
+            </NavLink>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+            <NavLink class="nav-link" href="databinding/c">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>  Binding C
+            </NavLink>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+            <NavLink class="nav-link" href="databinding/betweenComponents">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> In Components
+            </NavLink>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+            <NavLink class="nav-link" href="databinding/mvvm">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>   Mvvm
+            </NavLink>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+            <NavLink class="nav-link" href="databinding/treemvvm">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>   Mvvm Tree
+            </NavLink>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+            <NavLink class="nav-link" href="databinding/treemvvmif">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>   Mvvm Tree If
+            </NavLink>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+            <NavLink class="nav-link" href="databinding/tree">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>   Tree
+            </NavLink>
+        </li>
+        <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+            <NavLink class="nav-link" href="databinding/treeclass">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>   Tree Class
+            </NavLink>
+        </li>
+
+        <li class="nav-item-header px-3">
+            <span class="text-muted">CONFIGURACION</span>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="combo-enum">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Combo Enum
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="combo-model">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Combo Model
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/combo/valuechanged">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Combo ValueChanged
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="combo-cascade">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Combo Cascade
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="inputradio-simple">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Input Radio
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="graphics/bar-1">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Graphics Bar
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="componentes/panel">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Panel
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="dynamicstyle">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Estilos dinámicos
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="dynamicstyle2">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Estilos dinámicos2
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/listas/ejemploA">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Listas A
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/listas/ejemploB">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Listas B
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/listas/ejemploC">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Listas C
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/message/example1">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Mensajes
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/preventdefault/example1">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Prevent Default
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/preventdefault/stopPropagation">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Stop Propagation
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/buttonDisplay">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Button Display
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/invoice/a">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Invoice A
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/template/a">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Template A
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/parametros/basico">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Parámetros - básico
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/parametros/arbitrarios">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Parámetros - arbitrarios
+            </NavLink>
+        </li>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+    private bool collapseBasico = false;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private string GrupoBasico_Display => collapseBasico ? "none" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+    private void ToggleBasico()
+    {
+        collapseBasico = !collapseBasico;
+        Console.WriteLine(collapseBasico);
+    }
+}

@@ -1,0 +1,14 @@
+﻿@page "/componentes/panel"
+
+<PanelComponent ButtonText="Aceptar" Titulo="Ejemplo simple" OnClickCallback="Ejecutar">
+  <div>Texto dentro del panel :@texto</div>
+</PanelComponent>
+
+@code {
+
+  string texto;
+  void Ejecutar()
+  {
+    texto = "Ejecutado";
+  }
+}

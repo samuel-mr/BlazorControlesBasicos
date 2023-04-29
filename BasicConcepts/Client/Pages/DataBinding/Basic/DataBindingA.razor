@@ -1,0 +1,65 @@
+﻿@page "/databinding/a"
+
+<h1>Data binding</h1>
+<div>
+
+  <h2>One way</h2>
+  First name: <label>@Entidad.FirstName</label>
+  Last name: <label>@Entidad.LastName</label>
+</div>
+
+<div>
+  <h3>One way (form controls)</h3>
+  First name:
+  <input value="@Entidad.FirstName" />
+  Last name:
+  <input value="@Entidad.LastName" />
+</div>
+
+<div>
+  <h3>Two way</h3>
+  First name:
+  <input @bind="@Entidad.FirstName" />
+  Last name:
+  <input @bind="@Entidad.LastName" />
+</div>
+
+<div>
+  <h3>Two way (onInput)</h3>
+  First name:
+  <input @bind-value="@Entidad.FirstName" @bind-value:event="oninput" />
+  Last name:
+  <input @bind-value="@Entidad.LastName" @bind-value:event="oninput" />
+</div>
+
+<div>
+  <button @onclick="@OkButton_Click">Cambiar nombre</button>
+  <button @onclick="@(()=> Entidad.LastName = "Mozart")">Cambiar apellido</button>
+</div>
+
+@code{
+  class EjemploEntity
+  {
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+  }
+
+  EjemploEntity Entidad { get; set; }
+
+  protected override Task OnInitializedAsync()
+  {
+    Entidad = new EjemploEntity
+    {
+      FirstName = "Sam",
+      LastName = "Bach"
+    };
+    return base.OnInitializedAsync();
+  }
+
+  void OkButton_Click()
+  {
+    Entidad.FirstName = "Sebastian";
+
+  }
+
+}

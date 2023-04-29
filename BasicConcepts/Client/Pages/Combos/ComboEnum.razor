@@ -1,0 +1,28 @@
+﻿@page "/combo-enum"
+@using ControlesBasicos.Shared
+
+<div>Selectores</div>
+
+<select id="monedaSelect" @bind="MonedaActual">
+  <option value="@MonedaType.Soles">Soles S/.</option>
+  <option value="@MonedaType.Dolares">Dolares $</option>
+  <option value="@MonedaType.Euros">Euros</option>
+</select>
+<div>
+  Actualmente selecionado: @MonedaActual
+</div>
+@code {
+  protected override Task OnInitializedAsync()
+  {
+    return base.OnInitializedAsync();
+  }
+
+  public enum MonedaType
+  {
+    Soles,
+    Dolares,
+    Euros
+  }
+
+  private MonedaType MonedaActual { get; set; } = MonedaType.Soles;
+}

@@ -1,0 +1,26 @@
+﻿@page "/parametros/arbitrarios"
+<h1>Parámetros - arbitrarios</h1>
+
+<p>
+  <code>Envia parámetros no definidos explícitamente en los hijos, sirve cuando se tienen muchas posibles configuraciones en el hijo para que no se declaren todos esos como parámetros</code>
+</p>
+<p>
+  <code>Los @@atributes deben colocarse al final (para que sobreescriba a otros atributos predefinidos)</code>
+</p>
+
+<ComponenteParametrosArbitrarios placeholder="atributos implícitos" />
+
+<ComponenteParametrosArbitrarios @attributes="@(new Dictionary<string,object>(){
+                                                  {"placeholder", "atributos explícitos" },
+                                                  {"disabled", "true" }
+                                 })" />
+
+<ComponenteParametrosArbitrarios @attributes="ParametrosInternos" />
+
+@code{
+
+  private Dictionary<string, object> ParametrosInternos = new Dictionary<string, object>(){
+                                                  {"placeholder", "atributos explícitos (como variables)" },
+                                                  {"disabled", "true" }
+                                 };
+}
