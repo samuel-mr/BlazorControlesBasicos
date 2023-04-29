@@ -1,6 +1,6 @@
 ﻿@page "/databinding/b"
 
-<h1>Data binding 2</h1>
+<h2>Data binding : DateTime</h2>
 
 <p>
     Fecha: <label>@Fecha</label>
@@ -9,16 +9,17 @@
     Default: <input @bind="Fecha" />
 </p>
 <p>
-    yyyy-MM-dd: <input @bind="Fecha" @bind:format="yyyy-MM-dd" />
+    yyyy-MM-dd: <input @bind="Fecha" @bind:format="yyyy-MM-dd" /> <span class="text-muted">Formateado</span> 
 </p>
 <p>
-    dd-MM-yyyy: <input @bind="Fecha" @bind:format="dd-MM-yyyy" />
+    dd-MM-yyyy: <input @bind="Fecha" @bind:format="dd-MM-yyyy" />  <span class="text-muted">Formateado 2</span>
 </p>
+<h2>Data binding : decimal</h2>
 <p>
-    Precio: <input @bind="precio" />
+    Precio: <input @bind="precio" /> <span class="text-muted">45.1234M ;</span>
 </p>
 
-@code{
+@code {
 
     DateTime Fecha = new DateTime(2020, 3, 30);
     decimal precio = 45.1234M;

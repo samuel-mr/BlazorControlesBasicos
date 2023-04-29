@@ -1,7 +1,8 @@
 ﻿@page "/componentes/panel"
 
+<div>Ejemplo: Creacion de un componente básico con varias propiedades y con un botón envía información de padre a hijo po</div>
 <PanelComponent ButtonText="Aceptar" Titulo="Ejemplo simple" OnClickCallback="Ejecutar">
-  <div>Texto dentro del panel :@texto</div>
+  <div>Texto enviado desde el componente superior :@texto</div>
 </PanelComponent>
 
 @code {

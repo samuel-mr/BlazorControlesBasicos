@@ -1,6 +1,6 @@
 ﻿@page "/preventdefault/example1"
 
-Cantidad: <input value="@Count" @onkeypress="KeyHandler" @onkeypress:preventDefault/>
+Solo permite el símbolo + <input value="@Count" @onkeypress="KeyHandler" @onkeypress:preventDefault/>
 
 @code{
   int Count = 0;

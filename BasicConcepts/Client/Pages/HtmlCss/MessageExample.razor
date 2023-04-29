@@ -1,0 +1,38 @@
+﻿@page "/message/example1"
+@inject IJSRuntime js
+@inject ILogMessage logui
+
+@using BasicConcepts.Client.HelperJS
+
+<h1>Message</h1>
+
+<button @onclick="ShowMessageLogUI">Mensajes Toast</button>
+<button @onclick="Confirmar">Mensaje de confirmación nativo</button>
+@{
+    async Task ShowMessageLogUI()
+    {
+        await logui.Success("Mostrando varios mensajes sucesivos...");
+        await logui.Success("success!");
+        await Task.Delay(500);
+        await logui.Info("info");
+        await logui.Info("info");
+        await Task.Delay(500);
+        await logui.Warning("warning");
+        await Task.Delay(500);
+        await logui.Error("error");
+        // await js.InvokeVoidAsync(,);
+    }
+
+    async Task Confirmar()
+    {
+        var confirmo = await js.Confirm("Realmente desea eliminarlo?");
+        if (confirmo)
+        {
+            await logui.Success("Confirmado!");
+        }
+        else
+        {
+            await logui.Warning("Cancelado");
+        }
+    }
+}

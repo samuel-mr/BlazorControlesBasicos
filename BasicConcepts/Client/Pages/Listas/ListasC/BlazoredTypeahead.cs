@@ -10,7 +10,7 @@ using System.Timers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Web;
 
-namespace BasicConcepts.Client.Pages.ListasC
+namespace BasicConcepts.Client.Pages.Listas.ListasC
 {
   public partial class BlazoredTypeahead<TItem, TValue> : ComponentBase, IDisposable
   {
