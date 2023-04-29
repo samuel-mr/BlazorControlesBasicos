@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ControlesBasicos.Shared
+namespace BasicConcepts.Shared
 {
   public class WeatherForecast
   {

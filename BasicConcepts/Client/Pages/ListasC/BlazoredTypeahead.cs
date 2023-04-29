@@ -10,13 +10,13 @@ using System.Timers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Web;
 
-namespace ControlesBasicos.Client.Pages.ListasC
+namespace BasicConcepts.Client.Pages.ListasC
 {
   public partial class BlazoredTypeahead<TItem, TValue> : ComponentBase, IDisposable
   {
     private EditContext _editContext;
     private FieldIdentifier _fieldIdentifier;
-    private Timer _debounceTimer;
+    private System.Timers.Timer _debounceTimer;
     private string _searchText = string.Empty;
     private bool _eventsHookedUp = false;
     private ElementReference _searchInput;
@@ -110,7 +110,7 @@ namespace ControlesBasicos.Client.Pages.ListasC
         throw new InvalidOperationException($"{GetType()} requires a {nameof(ResultTemplate)} parameter.");
       }
 
-      _debounceTimer = new Timer();
+      _debounceTimer = new System.Timers.Timer();
       _debounceTimer.Interval = Debounce;
       _debounceTimer.AutoReset = false;
       _debounceTimer.Elapsed += Search;

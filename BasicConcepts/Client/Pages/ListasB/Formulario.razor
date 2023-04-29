@@ -2,7 +2,7 @@
 @inject HttpClient httpClient
 
 @*@using Blazored.Typeahead*@
-@using ControlesBasicos.Shared.DTO
+@using BasicConcepts.Shared.DTO
 
 <h3>BlazoredTypeahead</h3>
 <!--
@@ -27,7 +27,7 @@
 
   protected override async Task OnInitializedAsync()
   {
-    var response = await httpClient.GetJsonAsync<List<GetAllPersonItem>>($"api/personas/getall");
+        var response = await httpClient.GetFromJsonAsync<List<GetAllPersonItem>>($"api/personas/getall");
     PersonasList = response;
   }
 

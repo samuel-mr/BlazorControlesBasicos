@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlesBasicos.Client.Pages.CombosCascade
+namespace BasicConcepts.Client.Pages.CombosCascade
 {
   public class InputSelectNumber<T> : InputSelect<T>
   {

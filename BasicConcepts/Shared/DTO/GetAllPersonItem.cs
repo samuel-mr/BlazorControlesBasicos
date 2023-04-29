@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlesBasicos.Shared.DTO
+namespace BasicConcepts.Shared.DTO
 {
   public class GetAllPersonItem
   {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlesBasicos.Client.HelperJS
+namespace BasicConcepts.Client.HelperJS
 {
   public class SweetAlertMessage : IInteractionMessage
   {

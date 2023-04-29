@@ -10,16 +10,16 @@
     <li class="nav-item-header px-3">
       <button class="nav-item-buttongrup" @onclick="ToggleBasico" @onclick:stopPropagation="true">DataBinding</button>
     </li>
-    <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+    <div class="nav-item px-3" style="display:@GrupoBasico_Display">
       <NavLink class="nav-link" href="databinding/a">
         <span class="oi oi-list-rich" aria-hidden="true"></span>  Binding A
       </NavLink>
-    </li>
-    <li class="nav-item px-3" style="display:@GrupoBasico_Display">
+    </div>
+        <div class="nav-item px-3" style="display:@GrupoBasico_Display">
       <NavLink class="nav-link" href="databinding/b">
         <span class="oi oi-list-rich" aria-hidden="true"></span>  Binding B
       </NavLink>
-    </li>
+    </div>
     <li class="nav-item px-3" style="display:@GrupoBasico_Display">
       <NavLink class="nav-link" href="databinding/c">
         <span class="oi oi-list-rich" aria-hidden="true"></span>  Binding C

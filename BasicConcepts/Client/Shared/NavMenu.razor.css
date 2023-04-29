@@ -17,10 +17,17 @@
     vertical-align: text-top;
     top: -2px;
 }
-
+li.nav-item {
+    list-style-type: none;
+}
+li.nav-item ::before{
+       content: '-';
+    color:red;
+}
+ 
 .nav-item {
     font-size: 0.9rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.1rem;
 }
 
     .nav-item:first-of-type {
@@ -30,25 +37,25 @@
     .nav-item:last-of-type {
         padding-bottom: 1rem;
     }
-
+    
     .nav-item ::deep a {
         color: #d7d7d7;
-        border-radius: 4px;
-        height: 3rem;
+        border-radius: 1px;
+        height: 0.5rem;
         display: flex;
         align-items: center;
-        line-height: 3rem;
+        line-height: 1.5rem;
     }
 
-.nav-item ::deep a.active {
-    background-color: rgba(255,255,255,0.25);
-    color: white;
-}
+        .nav-item ::deep a.active {
+            background-color: rgba(255,255,255,0.25);
+            color: white;
+        }
 
-.nav-item ::deep a:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-}
+        .nav-item ::deep a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
 
 @media (min-width: 641px) {
     .navbar-toggler {

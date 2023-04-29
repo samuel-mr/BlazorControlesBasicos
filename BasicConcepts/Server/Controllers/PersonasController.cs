@@ -1,4 +1,4 @@
-﻿using ControlesBasicos.Shared.DTO;
+﻿using BasicConcepts.Shared.DTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

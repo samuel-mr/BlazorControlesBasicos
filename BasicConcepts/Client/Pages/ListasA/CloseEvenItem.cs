@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlesBasicos.Client.Pages.ListasA
+namespace BasicConcepts.Client.Pages.ListasA
 {
   public class CloseEvenItem
   {

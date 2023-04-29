@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ControlesBasicos.Client.Pages.DataBinding.TreeClass
+namespace BasicConcepts.Client.Pages.DataBinding.TreeClass
 {
   public class Book : IEquatable<Book>
   {

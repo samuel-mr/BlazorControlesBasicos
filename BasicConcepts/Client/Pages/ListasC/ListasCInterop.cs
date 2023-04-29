@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlesBasicos.Client.Pages.ListasC
+namespace BasicConcepts.Client.Pages.ListasC
 {
   public static class ListasCInterop
   {

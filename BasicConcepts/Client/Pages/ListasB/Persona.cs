@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ControlesBasicos.Client.Pages.ListasB
+namespace BasicConcepts.Client.Pages.ListasB
 {
   public class Persona
   {

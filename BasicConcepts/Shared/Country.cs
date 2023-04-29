@@ -1,4 +1,4 @@
-﻿namespace ControlesBasicos.Shared
+﻿namespace BasicConcepts.Shared
 {
   public class Country
   {

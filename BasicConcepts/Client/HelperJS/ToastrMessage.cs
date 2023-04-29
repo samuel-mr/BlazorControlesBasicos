@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System;
 
-namespace ControlesBasicos.Client.HelperJS
+namespace BasicConcepts.Client.HelperJS
 {
   public class ToastrMessage : ILogMessage
   {
