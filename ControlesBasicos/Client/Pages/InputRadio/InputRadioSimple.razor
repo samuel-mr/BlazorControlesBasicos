@@ -1,0 +1,36 @@
+﻿@page "/inputradio-simple"
+@using ControlesBasicos.Shared
+
+<div>Input Radio</div>
+
+<div>
+  <h4> Selected - @selectedAnswer </h4>
+  @foreach (var item in lista)
+  {
+    <div>
+      <input type="radio" name="question1" id="@item.Id" value="@item.Id" @onchange="SelectionChanged" />
+      <label for="@item.Id">@item.Name</label>
+    </div>
+  }
+</div>
+
+@code {
+
+
+  string selectedAnswer = "";
+  void SelectionChanged(ChangeEventArgs args)
+  {
+    selectedAnswer = args.Value.ToString();
+  }
+
+  List<SimpleLocalCombo> lista = new List<SimpleLocalCombo> {
+    new SimpleLocalCombo() { Id =1, Name = "uno" },
+    new SimpleLocalCombo() { Id = 2 , Name = "dos" }
+  };
+
+  public class SimpleLocalCombo
+  {
+    public int Id { get; set; }
+    public string Name { get; set; }
+  }
+}

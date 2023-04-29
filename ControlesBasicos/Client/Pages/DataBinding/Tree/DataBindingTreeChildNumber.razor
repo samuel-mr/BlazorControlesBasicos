@@ -1,0 +1,27 @@
+﻿<h3>Number</h3>
+
+<input type="number" @bind-value="Number" @bind-value:event="oninput" />
+
+@code {
+
+  private int _number;
+  [Parameter]
+  public int Number
+  {
+    get
+    {
+      return _number;
+    }
+    set
+    {
+      if (_number != value)
+      {
+        _number = value;
+        NumberChanged.InvokeAsync(value);
+      }
+    }
+  }
+
+  [Parameter]
+  public EventCallback<int> NumberChanged { get; set; }
+}

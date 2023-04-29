@@ -1,0 +1,27 @@
+﻿@page "/databinding/treeclass"
+<h3>Tree with class</h3>
+<p>* aun no funciona porque informa de las actualizaciones desde el hijo hacia el padre</p>
+<p>
+  Title:<input @bind-value="MyBook.Title" @bind-value:event="oninput" />
+</p>
+<p>
+  Year:<input type="number" @bind-value="MyBook.Year" @bind-value:event="oninput" />
+</p>
+<p style="background-color:burlywood">
+  <DataBindingTreeChild MyBook="@MyBook" BookChanged="@OnBookChanged" /> 
+</p>
+
+@code {
+  public Book MyBook { get; set; } = new Book();
+
+  protected override void OnInitialized()
+  {
+  }
+
+  void OnBookChanged(Book value)
+  {
+    //  MyBook.Title = value.Title;
+    // MyBook.Year = value.Year;
+  }
+
+}

@@ -1,23 +1,46 @@
 ﻿@page "/databinding/c"
 
-<h1>Data binding (explicit onChange)</h1>
-<p>
-  OnChange: @StringOnChange
-</p>
-<p>
-  OnKeyPress: @StringOnKeyPress (@CantKeyPress)
-</p>
+<h1>Data binding (explicit onChange + OnkeyPress)</h1>
+<div>
+  OnChange:
+  (solo value=@@propiedad):
+  <input value="@StringOnChange" />
+  (@@onchange= ...)
+  <input value="@StringOnChange" @onchange="@((ChangeEventArgs __e) => StringOnChange = __e.Value.ToString())" />
 
-OnChange: <input value="@StringOnChange" @onchange="@((ChangeEventArgs __e) => StringOnChange = __e.Value.ToString())" />
-OnKeyPress: <input value="@StringOnKeyPress" @onkeypress="@(OnKeyPress)" @onchange="@((ChangeEventArgs __e) => StringOnKeyPress = __e.Value.ToString())"/>
+  <p>
+    Valor actual: @StringOnChange
+  </p>
+
+  <div>
+    <button @onclick="MostrarValorActual">Mostrar valor actual</button>
+    <span>@valorActual</span>
+  </div>
+</div>
+<br />
+<div>
+  OnKeyPress:
+  <input value="@StringOnKeyPress" @onkeypress="@(OnKeyPress)" @onchange="@((ChangeEventArgs __e) => StringOnKeyPress = __e.Value.ToString())" />
+
+  <p>
+    OnKeyPress: @StringOnKeyPress (@CantKeyPress)
+  </p>
+</div>
 @code {
   private string StringOnChange = "";
 
   private int CantKeyPress = 0;
-  private string StringOnKeyPress= "";
+  private string StringOnKeyPress = "";
 
   void OnKeyPress(KeyboardEventArgs e)
   {
     CantKeyPress++;
   }
+
+  private string valorActual = "";
+  void MostrarValorActual()
+  {
+    valorActual = $"valor actual :'{StringOnChange}'";
+  }
 }
+

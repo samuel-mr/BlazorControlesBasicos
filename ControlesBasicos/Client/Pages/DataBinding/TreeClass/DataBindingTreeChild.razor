@@ -1,0 +1,62 @@
+﻿<h3>in child</h3>
+
+<input type="number" @bind-value="Year" @bind-value:event="oninput" />
+<input @bind-value="Title" @bind-value:event="oninput" />
+
+@code {
+
+  private Book _MyBook;
+  [Parameter]
+  public Book MyBook
+  {
+    get
+    {
+      return _MyBook;
+    }
+    set
+    {
+      if (_MyBook == null || !_MyBook.Equals(value))
+      {
+        _MyBook = value;
+        BookChanged.InvokeAsync(value);
+      }
+    }
+  }
+
+  public string Title
+  {
+    get
+    {
+      if (MyBook == null)
+        return "";
+      return MyBook.Title;
+    }
+    set
+    {
+      if (MyBook != null)
+        if (MyBook.Title != value)
+        {
+          MyBook.Title = value;
+        }
+    }
+  }
+
+  public int Year
+  {
+    get
+    {
+      return MyBook.Year;
+    }
+    set
+    {
+      if (MyBook != null)
+        if (MyBook.Year != value)
+        {
+          MyBook.Year = value;
+        }
+    }
+  }
+
+  [Parameter]
+  public EventCallback<Book> BookChanged { get; set; }
+}
