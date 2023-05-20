@@ -1,0 +1,13 @@
+﻿@page "/databinding/getset"
+
+<Summary>Get y Set (net7 peero actualmente con errores) codigo fue comentado</Summary>
+@*<input type="text"  @bind:get="Texto"  @bind:set="SetText" @bind:event="oninput"/>
+@code{
+    string Texto = "";
+
+    Task SetText()
+    {
+        Texto = Texto.ToUpper();
+        return Task.CompletedTask;
+    }
+}*@

@@ -1,4 +1,10 @@
-﻿<h3>@Titulo</h3>
+﻿<p>Title (required): @Titulo</p>
+<p>Message: @Message</p>
 @code{
-  [Parameter] public string Titulo { get; set; }
+  [Parameter] 
+  [EditorRequired]
+  public string Titulo { get; set; }
+
+  [Parameter] public string Message { get; set; }
+
 }

@@ -1,7 +1,19 @@
 ﻿@page "/inputradio-simple"
 @using BasicConcepts.Shared
 
-<div>Input Radio</div>
+<Summary>Checkbox: Toggle</Summary>
+<input id="chkSimple" type="checkbox" @onchange="@(()=> isToShow = !isToShow)" /> 
+@if (isToShow)
+{
+    <label style="color:red" for="chkSimple">Chequeado</label>
+}
+else
+{
+    <label style="color:black" for="chkSimple">No chequeado</label>
+}
+
+<Summary>Checkbox: Toggle (with binding)</Summary>
+<input id="chkBinding" type="checkbox" @bind="isToShow" /> <label for="chkBinding"> (Enlazado por data binding)</label>
 
 <div>
   <h4> Selected - @selectedAnswer </h4>
@@ -15,7 +27,7 @@
 </div>
 
 @code {
-
+    bool isToShow = false;
 
   string selectedAnswer = "";
   void SelectionChanged(ChangeEventArgs args)

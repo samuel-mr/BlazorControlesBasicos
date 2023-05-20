@@ -1,0 +1,27 @@
+﻿@page "/databinding/after"
+
+<Summary>After: permite ejecutar una función async luego de ejecutar el binding (codigo comentado porque necesita net7</Summary>
+@*<input type="text" @bind="Texto" @bind:after="Search" />
+
+@foreach(var item in Result)
+{
+    <span>@item</span>
+}
+@code{
+    string Texto = "";
+    List<string> Result = new List<string>();
+
+    async Task Search()
+    {
+        var lugares = new List<string>()
+        {
+            "La catedral",
+            "La casa",
+            "El camino",
+            "El casino"
+        };
+        await Task.Delay(1000);
+
+        Result = lugares.Where(x => lugares.Contains(Texto)).ToList();
+    }
+}*@

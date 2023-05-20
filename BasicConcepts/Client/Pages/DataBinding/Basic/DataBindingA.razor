@@ -1,8 +1,8 @@
 ﻿@page "/databinding/a"
 
-<h1>Data binding</h1>
-<div>
+<Summary>Data binding</Summary>
 
+<div>
   <h2>One way</h2>
   First name: <label>@Entidad.FirstName</label>
   Last name: <label>@Entidad.LastName</label>
@@ -17,7 +17,7 @@
 </div>
 
 <div>
-  <h3>Two way</h3>
+  <h3>Two way (on lost focus)</h3>
   First name:
   <input @bind="@Entidad.FirstName" />
   Last name:
@@ -25,7 +25,15 @@
 </div>
 
 <div>
-  <h3>Two way (onInput)</h3>
+    <h3>Two way (onInput) bind</h3>
+    First name:
+    <input @bind="@Entidad.FirstName" @bind:event="oninput" />
+    Last name:
+    <input @bind="@Entidad.LastName" @bind:event="oninput" />
+</div>
+
+<div>
+  <h3>Two way (onInput) bind-value</h3>
   First name:
   <input @bind-value="@Entidad.FirstName" @bind-value:event="oninput" />
   Last name:

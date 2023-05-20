@@ -60,5 +60,14 @@ a, .btn-link {
 }
 
     .blazor-error-boundary::after {
-        content: "An error has occurred."
+        content: "An error has occurred 2."
     }
+
+.summary {
+    background-color: #d8d8d8;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: #414142;
+    padding-left: 13px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
